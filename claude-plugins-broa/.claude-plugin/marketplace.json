@@ -1,0 +1,25 @@
+{
+  "name": "broa-plugins",
+  "owner": {
+    "name": "Clínica Broa",
+    "url": "https://github.com/clinicabroa"
+  },
+  "metadata": {
+    "description": "Biblioteca de plugins de Claude distribuida a la organización Clínica Broa."
+  },
+  "plugins": [
+    {
+      "name": "corporate-law-expert-mx",
+      "source": {
+        "source": "github",
+        "repo": "abogadodigital/Corporate-Law-Expert-MX"
+      },
+      "description": "Derecho societario mexicano: LGSM (260 artículos), identificación del tipo societario aplicable, 55 tesis de la SCJN, análisis de riesgos de responsabilidad, redacción de documentos societarios, gobierno corporativo y material docente. Obra de Joel A. Gómez Treviño, redistribuida por referencia bajo CC BY-NC-SA 4.0 (uso no comercial).",
+      "author": {
+        "name": "Joel A. Gómez Treviño"
+      },
+      "homepage": "https://github.com/abogadodigital/Corporate-Law-Expert-MX",
+      "license": "CC-BY-NC-SA-4.0"
+    }
+  ]
+}
