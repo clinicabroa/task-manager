@@ -50,19 +50,31 @@ el equipo recibe las actualizaciones que él publique.
 
 ## Pasos (los ejecuta un Owner de la organización en claude.ai)
 
-1. **Crear el repositorio espejo.** Crea en GitHub el repositorio
-   `clinicabroa/claude-plugins` con visibilidad **privada** (o interna).
+1-2. **Crear el repositorio espejo y subir el manifiesto.** Desde una máquina
+   con `gh` autenticado como `clinicabroa`, parado en la raíz de este repo:
 
-2. **Copiar el manifiesto.** Copia `.claude-plugin/marketplace.json` de este
-   directorio a la **raíz** del nuevo repositorio, respetando la ruta:
+   ```bash
+   gh repo create clinicabroa/claude-plugins --private \
+     --description "Biblioteca de plugins de Claude distribuida a Clínica Broa"
 
+   git clone https://github.com/clinicabroa/claude-plugins /tmp/claude-plugins
+   mkdir -p /tmp/claude-plugins/.claude-plugin
+   cp claude-plugins-broa/.claude-plugin/marketplace.json \
+      /tmp/claude-plugins/.claude-plugin/marketplace.json
+
+   cd /tmp/claude-plugins
+   git add .claude-plugin/marketplace.json
+   git commit -m "Add Broa plugin marketplace manifest"
+   git push
    ```
-   clinicabroa/claude-plugins/
-   └── .claude-plugin/
-       └── marketplace.json
-   ```
 
-   Hazle push a la rama por defecto.
+   La ruta del archivo importa: el manifiesto debe quedar exactamente en
+   `.claude-plugin/marketplace.json`, en la **raíz** del repo nuevo.
+
+   > Este paso no puede hacerlo Claude Code desde una sesión remota: el token
+   > de la Claude GitHub App está limitado a los repositorios donde está
+   > instalada y no tiene permiso para crear repositorios nuevos (GitHub
+   > responde `403 Resource not accessible by integration`).
 
 3. **Verificar la conexión de GitHub.** La sincronización de organización lee
    el repo mediante la Claude GitHub App. Si aún no está instalada sobre
